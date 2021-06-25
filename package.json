@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "node ./bin/www",
     "devStart": "(cd public/client && yarn run build)&& (cd ../../ && yarn start)",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix public/client && npm run build --prefix public/client"
   },
