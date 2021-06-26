@@ -15,6 +15,7 @@ const withAuth = function(req, res, next) {
       } else {
         req.username = decoded.username;
         req.teacher_id = decoded.teacher_id;
+        req.isAdmin = decoded.isAdmin;
         next();
       }
     });

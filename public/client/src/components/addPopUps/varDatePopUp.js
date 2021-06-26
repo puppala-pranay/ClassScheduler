@@ -54,8 +54,9 @@ export default function VarDatePopup (props) {
     }
 
     const days = function(){
-        var lastDayOfMonth = new Date(date.year,date.month+1,0).getDate();
-        var rows = [];
+        var lastDayOfMonth = new Date(date.year,parseInt(date.month)+1,0).getDate();
+        //alert(date.year+ " "+date.month+" "+lastDayOfMonth);
+        var rows = []; 
         for(var i=1;i<=lastDayOfMonth;i++){
             rows.push(
                 <option value={i}>{i}</option>
@@ -65,6 +66,7 @@ export default function VarDatePopup (props) {
     }
 
     function ChangeDate(e){
+        //alert(e.target.value);
         setDate((prevState)=>{
             return{...prevState,[e.target.name]: e.target.value}
         });
@@ -79,7 +81,7 @@ export default function VarDatePopup (props) {
         setInfo(e.target.value)
     }
     function onClickButton(e){
-        alert("clicked");
+        //alert("clicked");
         setLoading(true);
         fetch("/classes",{
             method : "POST",
@@ -100,7 +102,7 @@ export default function VarDatePopup (props) {
             }
             else {
                 setLoading(false);
-                alert("Sorry , Try another Slot");
+                //alert("Sorry , Try another Slot");
                 throw new Error("response : "+res.status);
             }
         })

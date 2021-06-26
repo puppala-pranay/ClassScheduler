@@ -42,7 +42,7 @@ export default function ConstDatePopup (props) {
         setInfo(e.target.value)
     }
     function onClickButton(e){
-        alert("clicked");
+        //alert("clicked");
         setLoading(true);
         fetch("/classes",{
             method : "POST",
@@ -63,7 +63,7 @@ export default function ConstDatePopup (props) {
             }
             else {
                 setLoading(false);
-                alert("Sorry , Try another Slot");
+                //alert("Sorry , Try another Slot");
                 throw new Error("response : "+res.status);
             }
         })

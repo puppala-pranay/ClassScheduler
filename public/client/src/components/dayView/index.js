@@ -50,7 +50,7 @@ export default function DayView(props){
     }
 
     function addClass(){
-        alert("clicked");
+        //alert("clicked");
         togglePopup();
     }
 

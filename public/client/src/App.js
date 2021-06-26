@@ -42,6 +42,15 @@ function App() {
     .catch(e=>console.log(e));
   }
 
+  function logout(){
+    setLoading(true);
+    fetch("/login/logout")
+    .then(res=>{
+      checkLogged();
+    })
+    .catch(e=>console.log(e));
+  }
+
   function change(e){
     setuser((prev)=>{
       return {...prev, [e.target.name] : e.target.value}
@@ -80,7 +89,7 @@ function App() {
     <div className="App">
       {
         !loading?
-        is_logged?<HomePage></HomePage>:
+        is_logged?<HomePage isAdmin={isAdmin} teacher_id={teacher_id} logOut = {logout}></HomePage>:
           <div className="LoginDetails">
 
             <h2>Login to view schedule</h2>

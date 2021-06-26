@@ -12,7 +12,7 @@ import "../../css/popup.css";
 
 export default function HomePage(props){
 
-    const [teacher_id,setTeacherId] = useState(1);
+    const [teacher_id,setTeacherId] = useState(props.teacher_id);
     const [view,setView] = useState(3);
     const [teachers,setTeachersList] = useState([]);
     const [loading,setLoading] = useState(false);
@@ -21,17 +21,22 @@ export default function HomePage(props){
 
     useEffect(()=>{
         getTeachers();
-    },[]);
+    },[props]);
 
 
     function selectTeacherId(event){
-        setTeacherId(event.target.value);
-        alert(event.target.value);
+        if(!props.isAdmin)alert(
+            "Sorry teacher cant be changed. Require Admin Previlage"
+        );else{
+            setTeacherId(event.target.value);
+            //alert(event.target.value);
+        }
+        
     }
 
     function selectView(event){
         setView(event.target.value);
-        alert(event.target.value);
+        //alert(event.target.value);
     }
 
     const togglePopupAdd = () => {
@@ -123,6 +128,9 @@ export default function HomePage(props){
                         next
                     </button>
                     </div>
+                </div>
+                <div className="Logout">
+                        <button onClick={()=>{props.logOut()}}>LogOut</button>
                 </div>
             </div>
 
